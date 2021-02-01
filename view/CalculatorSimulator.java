@@ -12,8 +12,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controller.ButtonClickListener;
+import model.Calculator;
+
 public class CalculatorSimulator {
 
+    private Calculator calculator = new Calculator();
     private JFrame window;
     private JTextArea display = new JTextArea();
     private JButton addButton = new JButton("+");
@@ -27,6 +31,7 @@ public class CalculatorSimulator {
 
     public CalculatorSimulator(JFrame window) {
         this.window = window;
+        window.setTitle("Calculator Simulator");
     }
     
     public void init() {
@@ -56,5 +61,52 @@ public class CalculatorSimulator {
         row3.add(resultButton);
         row3.add(exitButton);
         southPanel.add(row3);
+
+        ButtonClickListener buttonClickListener = new ButtonClickListener(this);
+        addButton.addActionListener(buttonClickListener);
+        mulButton.addActionListener(buttonClickListener);
+        subButton.addActionListener(buttonClickListener);
+        divButton.addActionListener(buttonClickListener);
+        resultButton.addActionListener(buttonClickListener);
+        exitButton.addActionListener(buttonClickListener);
+        enterButton.addActionListener(buttonClickListener);
+    }
+
+    public JButton getAddButton() {
+        return addButton;
+    }
+    public JButton getSubButton() {
+        return subButton;
+    }
+    public JButton getMulButton() {
+        return mulButton;
+    }
+    public JButton getDivButton() {
+        return divButton;
+    }
+    public JButton getEnterButton() {
+        return enterButton;
+    }
+    public JButton getResultButton() {
+        return resultButton;
+    }
+    public JButton getExitButton() {
+        return exitButton;
+    }
+
+    public JFrame getWindow() {
+        return window;
+    }
+
+    public Calculator getCalculator() {
+        return calculator;
+    }
+
+    public JTextField getNumField() {
+        return numField;
+    }
+
+    public JTextArea getDisplay() {
+        return display;
     }
 }
